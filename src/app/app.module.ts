@@ -4,10 +4,18 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { TextboxComponent } from './textbox/textbox.component';
+import { LanguagesComponent } from './languages/languages.component';
+import { LoadingComponent } from './loading/loading.component';
+import { ResutsComponent } from './resuts/resuts.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TextboxComponent,
+    LanguagesComponent,
+    LoadingComponent,
+    ResutsComponent
   ],
   imports: [
     BrowserModule,
