@@ -1,1 +1,13 @@
 /*Styling for this component had to be moved to styles.css*/
+
+button {
+  margin:  10px auto;
+  display: block;
+  /*
+  background-color: transparent;
+  border: solid 3px white;
+  color: white;
+  font-weight: bold;
+  font-stretch: expanded;
+   */
+}

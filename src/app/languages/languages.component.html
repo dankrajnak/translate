@@ -1,10 +1,7 @@
-<bs-sortable
-    [(ngModel)]="placeHolderLanguages"
-    itemClass="sortable-item"
-    itemActiveClass="sortable-item-active"
-    placeholderItem="Drag here"
-    placeholderClass="placeholderStyle"
-    wrapperClass="sortable-wrapper"
-  ></bs-sortable>
+<bs-sortable [(ngModel)]="placeHolderLanguages" itemClass="sortable-item" itemActiveClass="sortable-item-active" placeholderItem="Drag here"
+placeholderClass="placeholderStyle" wrapperClass="sortable-wrapper"></bs-sortable>
+
+<input class="form-control">
+<button type="button" class="btn btn-primary" [(ngModel)]="singleModel" (click)="showInputBox"> Add a Language </button>
 
 
