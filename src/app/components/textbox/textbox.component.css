@@ -4,3 +4,9 @@ input {
   box-shadow:4px 4px 5px  rgba(20,20,20, .5);
 }
 
+input:focus {
+  box-shadow: none;
+  transform: translate(4px, 4px);
+  border: none;
+}
+

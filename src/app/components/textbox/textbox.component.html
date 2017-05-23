@@ -1,4 +1,4 @@
   <div class="input-group input-group-lg">
-    <input type="text" class="form-control" >
+    <input type="text" class="form-control" (blur)="changeInputText($event.srcElement.value)">
   </div>
 

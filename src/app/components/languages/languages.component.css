@@ -3,6 +3,8 @@
 button {
   margin:  10px auto;
   display: block;
+  background-color: #333;
+  border: none;
   /*
   background-color: transparent;
   border: solid 3px white;
@@ -10,4 +12,8 @@ button {
   font-weight: bold;
   font-stretch: expanded;
    */
+}
+
+button:hover {
+  background-color: #111;
 }
