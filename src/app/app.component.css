@@ -7,11 +7,25 @@
   width: 50%;
   margin:auto;
   position: absolute;
-  top: 50%;
+  height: 80%;
+  top: 0%;
   left: 50%;
-  transform: translate(-50%, -100%) /*Put bottom of input in center of page */
+  transform: translate(-50%, 20%) /*Put bottom of input in center of page */
+
 }
+
 
 .header-text {
   margin-bottom: 20px;
+}
+
+.languages-wrapper {
+  width: 50%;
+  margin: auto;
+  margin-top: 80px;
+
+}
+
+app-languages{
+  margin: auto;
 }

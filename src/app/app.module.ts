@@ -8,6 +8,7 @@ import { TextboxComponent } from './textbox/textbox.component';
 import { LanguagesComponent } from './languages/languages.component';
 import { LoadingComponent } from './loading/loading.component';
 import { ResutsComponent } from './resuts/resuts.component';
+import { SortableModule } from 'ngx-bootstrap/sortable';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ResutsComponent } from './resuts/resuts.component';
     ResutsComponent
   ],
   imports: [
+    SortableModule.forRoot(),
     BrowserModule,
     FormsModule,
     HttpModule

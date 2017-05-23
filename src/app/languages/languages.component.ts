@@ -5,11 +5,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './languages.component.html',
   styleUrls: ['./languages.component.css']
 })
-export class LanguagesComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+export class LanguagesComponent{
+  public placeHolderLanguages: string[] = [
+    'German',
+    'Spanish',
+    'French',
+    'Portuguese'
+  ];
 
 }

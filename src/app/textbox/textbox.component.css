@@ -1,6 +1,6 @@
 input {
-  display: block;
-  margin: auto;
-  width: 50%;
+  color: rgb(220,71, 73) !important;
+  font-weight: 600;
+  box-shadow:4px 4px 5px  rgba(20,20,20, .5);
 }
 
