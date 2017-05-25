@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { SortableModule } from 'ngx-bootstrap/sortable';
+
 import { AppComponent } from './app.component';
 import { TextboxComponent } from './components/textbox/textbox.component';
 import { LanguagesComponent } from './components/languages/languages.component';
@@ -10,9 +13,7 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { ResutsComponent } from './components/resuts/resuts.component';
 
 import { StoreModule } from '@ngrx/store';
-import { SortableModule } from 'ngx-bootstrap/sortable';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-
 import { reducer } from './reducers';
 
 @NgModule({
@@ -21,15 +22,16 @@ import { reducer } from './reducers';
     TextboxComponent,
     LanguagesComponent,
     LoadingComponent,
-    ResutsComponent
+    ResutsComponent,
   ],
   imports: [
     SortableModule.forRoot(),
+    TypeaheadModule.forRoot(),
     StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

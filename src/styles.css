@@ -25,6 +25,15 @@ div .sortable-item-active{
 }
 
 div .sortable-wrapper {
-  background-color: rgba(255,255,255, .2);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  background-color: rgba(255,255,255, .4);
   padding: 20px;
 }
+
+typeahead-container {
+  background-color: white;
+  color: black;
+
+  position: relative !important;
+  }

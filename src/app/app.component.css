@@ -26,6 +26,44 @@
 
 }
 
+.button-wrapper {
+  width: 50%;
+  height: 100px;
+  margin: auto;
+  margin-top: 90px;
+  display: block;
+
+}
+
+button {
+  margin: auto;
+  display: block;
+  transform: translate(0%, 50%);
+  background-color: white;
+  color: rgb(220,71, 73);
+
+  border: none;
+  font-weight: lighter;
+  font-size: 24px;
+  box-shadow: 0px 5px 2px 0px rgba(20,20,20, .4);
+}
+
+button:hover {
+  background-color: #EEE;
+  color: rgb(220,71, 73) !important; /*override bootstrap*/
+}
+
+button:focus {
+  outline: none !important;
+  border: none !important; /*override bootstrap*/
+}
+
+button.focus {
+  outline: none !important;
+  border: none !important; /*override bootstrap*/
+}
+
+
 app-languages{
   margin: auto;
 }

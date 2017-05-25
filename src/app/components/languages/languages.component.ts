@@ -1,452 +1,117 @@
+import { GoogleTranslateService } from '../../services/google-translate';
+import { Observable } from 'rxjs/Rx';
+import { Store } from '@ngrx/store';
 import { createLanguageService } from 'tslint/lib';
 import { Component, OnInit } from '@angular/core';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { FormsModule } from '@angular/forms';
+import 'rxjs/add/observable/of';
+import { Language } from './../../models/language';
 
-const LANGUAGE_JSON = {
-  'data': {
-    'languages': [
-      {
-        'language': 'af',
-        'name': 'Afrikaans'
-      },
-      {
-        'language': 'sq',
-        'name': 'Albanian'
-      },
-      {
-        'language': 'am',
-        'name': 'Amharic'
-      },
-      {
-        'language': 'ar',
-        'name': 'Arabic'
-      },
-      {
-        'language': 'hy',
-        'name': 'Armenian'
-      },
-      {
-        'language': 'az',
-        'name': 'Azerbaijani'
-      },
-      {
-        'language': 'eu',
-        'name': 'Basque'
-      },
-      {
-        'language': 'be',
-        'name': 'Belarusian'
-      },
-      {
-        'language': 'bn',
-        'name': 'Bengali'
-      },
-      {
-        'language': 'bs',
-        'name': 'Bosnian'
-      },
-      {
-        'language': 'bg',
-        'name': 'Bulgarian'
-      },
-      {
-        'language': 'ca',
-        'name': 'Catalan'
-      },
-      {
-        'language': 'ceb',
-        'name': 'Cebuano'
-      },
-      {
-        'language': 'ny',
-        'name': 'Chichewa'
-      },
-      {
-        'language': 'zh',
-        'name': 'Chinese (Simplified)'
-      },
-      {
-        'language': 'zh-TW',
-        'name': 'Chinese (Traditional)'
-      },
-      {
-        'language': 'co',
-        'name': 'Corsican'
-      },
-      {
-        'language': 'hr',
-        'name': 'Croatian'
-      },
-      {
-        'language': 'cs',
-        'name': 'Czech'
-      },
-      {
-        'language': 'da',
-        'name': 'Danish'
-      },
-      {
-        'language': 'nl',
-        'name': 'Dutch'
-      },
-      {
-        'language': 'en',
-        'name': 'English'
-      },
-      {
-        'language': 'eo',
-        'name': 'Esperanto'
-      },
-      {
-        'language': 'et',
-        'name': 'Estonian'
-      },
-      {
-        'language': 'tl',
-        'name': 'Filipino'
-      },
-      {
-        'language': 'fi',
-        'name': 'Finnish'
-      },
-      {
-        'language': 'fr',
-        'name': 'French'
-      },
-      {
-        'language': 'fy',
-        'name': 'Frisian'
-      },
-      {
-        'language': 'gl',
-        'name': 'Galician'
-      },
-      {
-        'language': 'ka',
-        'name': 'Georgian'
-      },
-      {
-        'language': 'de',
-        'name': 'German'
-      },
-      {
-        'language': 'el',
-        'name': 'Greek'
-      },
-      {
-        'language': 'gu',
-        'name': 'Gujarati'
-      },
-      {
-        'language': 'ht',
-        'name': 'Haitian Creole'
-      },
-      {
-        'language': 'ha',
-        'name': 'Hausa'
-      },
-      {
-        'language': 'haw',
-        'name': 'Hawaiian'
-      },
-      {
-        'language': 'iw',
-        'name': 'Hebrew'
-      },
-      {
-        'language': 'hi',
-        'name': 'Hindi'
-      },
-      {
-        'language': 'hmn',
-        'name': 'Hmong'
-      },
-      {
-        'language': 'hu',
-        'name': 'Hungarian'
-      },
-      {
-        'language': 'is',
-        'name': 'Icelandic'
-      },
-      {
-        'language': 'ig',
-        'name': 'Igbo'
-      },
-      {
-        'language': 'id',
-        'name': 'Indonesian'
-      },
-      {
-        'language': 'ga',
-        'name': 'Irish'
-      },
-      {
-        'language': 'it',
-        'name': 'Italian'
-      },
-      {
-        'language': 'ja',
-        'name': 'Japanese'
-      },
-      {
-        'language': 'jw',
-        'name': 'Javanese'
-      },
-      {
-        'language': 'kn',
-        'name': 'Kannada'
-      },
-      {
-        'language': 'kk',
-        'name': 'Kazakh'
-      },
-      {
-        'language': 'km',
-        'name': 'Khmer'
-      },
-      {
-        'language': 'ko',
-        'name': 'Korean'
-      },
-      {
-        'language': 'ku',
-        'name': 'Kurdish (Kurmanji)'
-      },
-      {
-        'language': 'ky',
-        'name': 'Kyrgyz'
-      },
-      {
-        'language': 'lo',
-        'name': 'Lao'
-      },
-      {
-        'language': 'la',
-        'name': 'Latin'
-      },
-      {
-        'language': 'lv',
-        'name': 'Latvian'
-      },
-      {
-        'language': 'lt',
-        'name': 'Lithuanian'
-      },
-      {
-        'language': 'lb',
-        'name': 'Luxembourgish'
-      },
-      {
-        'language': 'mk',
-        'name': 'Macedonian'
-      },
-      {
-        'language': 'mg',
-        'name': 'Malagasy'
-      },
-      {
-        'language': 'ms',
-        'name': 'Malay'
-      },
-      {
-        'language': 'ml',
-        'name': 'Malayalam'
-      },
-      {
-        'language': 'mt',
-        'name': 'Maltese'
-      },
-      {
-        'language': 'mi',
-        'name': 'Maori'
-      },
-      {
-        'language': 'mr',
-        'name': 'Marathi'
-      },
-      {
-        'language': 'mn',
-        'name': 'Mongolian'
-      },
-      {
-        'language': 'my',
-        'name': 'Myanmar (Burmese)'
-      },
-      {
-        'language': 'ne',
-        'name': 'Nepali'
-      },
-      {
-        'language': 'no',
-        'name': 'Norwegian'
-      },
-      {
-        'language': 'ps',
-        'name': 'Pashto'
-      },
-      {
-        'language': 'fa',
-        'name': 'Persian'
-      },
-      {
-        'language': 'pl',
-        'name': 'Polish'
-      },
-      {
-        'language': 'pt',
-        'name': 'Portuguese'
-      },
-      {
-        'language': 'pa',
-        'name': 'Punjabi'
-      },
-      {
-        'language': 'ro',
-        'name': 'Romanian'
-      },
-      {
-        'language': 'ru',
-        'name': 'Russian'
-      },
-      {
-        'language': 'sm',
-        'name': 'Samoan'
-      },
-      {
-        'language': 'gd',
-        'name': 'Scots Gaelic'
-      },
-      {
-        'language': 'sr',
-        'name': 'Serbian'
-      },
-      {
-        'language': 'st',
-        'name': 'Sesotho'
-      },
-      {
-        'language': 'sn',
-        'name': 'Shona'
-      },
-      {
-        'language': 'sd',
-        'name': 'Sindhi'
-      },
-      {
-        'language': 'si',
-        'name': 'Sinhala'
-      },
-      {
-        'language': 'sk',
-        'name': 'Slovak'
-      },
-      {
-        'language': 'sl',
-        'name': 'Slovenian'
-      },
-      {
-        'language': 'so',
-        'name': 'Somali'
-      },
-      {
-        'language': 'es',
-        'name': 'Spanish'
-      },
-      {
-        'language': 'su',
-        'name': 'Sundanese'
-      },
-      {
-        'language': 'sw',
-        'name': 'Swahili'
-      },
-      {
-        'language': 'sv',
-        'name': 'Swedish'
-      },
-      {
-        'language': 'tg',
-        'name': 'Tajik'
-      },
-      {
-        'language': 'ta',
-        'name': 'Tamil'
-      },
-      {
-        'language': 'te',
-        'name': 'Telugu'
-      },
-      {
-        'language': 'th',
-        'name': 'Thai'
-      },
-      {
-        'language': 'tr',
-        'name': 'Turkish'
-      },
-      {
-        'language': 'uk',
-        'name': 'Ukrainian'
-      },
-      {
-        'language': 'ur',
-        'name': 'Urdu'
-      },
-      {
-        'language': 'uz',
-        'name': 'Uzbek'
-      },
-      {
-        'language': 'vi',
-        'name': 'Vietnamese'
-      },
-      {
-        'language': 'cy',
-        'name': 'Welsh'
-      },
-      {
-        'language': 'xh',
-        'name': 'Xhosa'
-      },
-      {
-        'language': 'yi',
-        'name': 'Yiddish'
-      },
-      {
-        'language': 'yo',
-        'name': 'Yoruba'
-      },
-      {
-        'language': 'zu',
-        'name': 'Zulu'
-      }
-    ]
-  }
-};
+import * as fromRoot from '../../reducers';
+import * as languages from '../../actions/languages';
+
 @Component({
   selector: 'app-languages',
   templateUrl: './languages.component.html',
-  styleUrls: ['./languages.component.css']
+  styleUrls: ['./languages.component.css'],
+  providers: [GoogleTranslateService],
 })
 
 export class LanguagesComponent implements OnInit{
-  public placeHolderLanguages: string[] = [
-    'German',
-    'Spanish',
-    'French',
-    'Portuguese'
-  ];
-  public allLanguages: string[] = [];
-  public showInputBox = false;
+  public selected: string;
+  public allLanguages: Language[] = [];
+  public languagesSelected$: Observable<Language[]>;
+
+   constructor(
+     private store: Store<fromRoot.State>,
+     private translateService: GoogleTranslateService
+     ) {
+     this.languagesSelected$ = this.store.select(fromRoot.getLanguages);
+   }
+
 
   ngOnInit() {
     // Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     // Add 'implements OnInit' to the class.
-    LANGUAGE_JSON.data.languages.forEach(language => this.addLanguage(language));
+    this.getLanguages();
   }
 
-  private addLanguage(language: any): void {
-    this.allLanguages.push(language.name);
+  public getLanguages(): void {
+    this.translateService.getLanguages().then(languages => this.allLanguages = languages);
+  }
+
+  public addLanguage(): void {
+    const language = this.findLanguage(this.selected);
+    if (language) {
+      this.store.dispatch(new languages.AddLanguageAction(this.findLanguage(this.selected)));
+    }
+  }
+
+  public sortableChange(elements: HTMLCollection): void {
+    // I couldn't figure out how to interface with ngx-bootstrap in the way I wanted
+    // so the way the action and this method are written may seem a little silly...
+    // It's written like this pending a different implementation of language selection element.
+
+    let languageStore: Language[];
+    this.store.select(fromRoot.getLanguages).subscribe(language => languageStore = language);
+
+    // Find element that was moved by comparing store to current elements (see comment above)
+    let current: Language[] = [];
+    current = [];
+    for (let i = 0; i < elements.length; i++) {
+      current.push(this.findLanguage(elements[i].textContent));
+    }
+    const swap = this.findSwap(languageStore, current);
+    if (!swap.movedItem) {
+      swap.movedItem = {name: undefined};
+    }
+    if (swap.to !== swap.from) {
+      console.log(swap.movedItem.name + ' moved from ' + swap.from + ' to ' + swap.to + '.');
+      this.store.dispatch(new languages.MoveLanguageAction({language: swap.movedItem, from: swap.from, to: swap.to}));
+    }
+  }
+
+  private findSwap(old: any[], current: any[]): {movedItem: any, from: number, to: number}{
+    let movedItem: any;
+    let from: number; // Index moved language was moved from
+    let to: number;  // Index moved language was moved to
+
+    for (let i = 0; i < old.length; i++) {
+      // Find first difference between arrays
+      if (current[i] !== old[i]) {
+        // Check to see if this element was moved forward to current position
+        if (current[i] === old[i + 1]) {
+          from = i;
+          break;
+        } else {
+          // This is the element that was moved.
+          movedItem = current[i];
+          to = i;
+          break;
+        }
+      }
+    }
+    for (let i = old.length - 1; i >= 0; i--) {
+    // Find the end of the swap
+      if (current[i] !== old[i]) {
+        if (from === undefined) {
+        from = i;
+        return {movedItem, from, to};
+        } else {
+          to = i;
+          movedItem = current[i];
+          return {movedItem, from, to};
+
+        }
+      }
+    }
+    // There were no differences between the arrays.
+    return {movedItem: current[0], from: 0, to: 0};
+  }
+
+  private findLanguage(name: string): Language {
+    return this.allLanguages.find(l => l.name === name);
   }
 
 }
