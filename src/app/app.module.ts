@@ -10,11 +10,12 @@ import { AppComponent } from './app.component';
 import { TextboxComponent } from './components/textbox/textbox.component';
 import { LanguagesComponent } from './components/languages/languages.component';
 import { LoadingComponent } from './components/loading/loading.component';
-import { ResutsComponent } from './components/resuts/resuts.component';
+import { ResultsComponent } from './components/results/results.component';
 
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducer } from './reducers';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { reducer } from './reducers';
     TextboxComponent,
     LanguagesComponent,
     LoadingComponent,
-    ResutsComponent,
+    ResultsComponent,
   ],
   imports: [
     SortableModule.forRoot(),

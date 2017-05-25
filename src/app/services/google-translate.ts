@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Language } from '../models/Language';
-import * as API from './api-secrets';
+import * as Secret from './api-secrets';
 
 
 
@@ -16,9 +16,14 @@ export class GoogleTranslateService {
   constructor(private http: Http) {}
 
   getLanguages(): Promise<Language[]> {
-    return this.http.get(`${this.API_PATH}/languages?target=en&key=${API.KEY}`)
+    return this.http.get(`${this.API_PATH}/languages?target=en&key=${Secret.KEY}`)
       .toPromise().then(res => res.json().data.languages as Language[])
       .catch(this.handleError);
+  }
+
+  translate(q: string, from: Language, to: Language): Promise<string> {
+    return this.http.post(`${this.API_PATH}?key=${Secret.KEY}`, {q, source: from.language, target: to.language})
+      .toPromise().then(res => res.json().data.translations.translatedText);
   }
 
   private handleError(error: any): Promise<any> {

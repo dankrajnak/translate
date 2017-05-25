@@ -6,14 +6,11 @@
 .inner-header {
   width: 50%;
   margin:auto;
-  position: absolute;
   height: 80%;
   top: 0%;
-  left: 50%;
-  transform: translate(-50%, 20%) /*Put bottom of input in center of page */
+  transform: translate(0%, 40%) /*Put bottom of input in center of page */
 
 }
-
 
 .header-text {
   margin-bottom: 20px;
@@ -24,6 +21,10 @@
   margin: auto;
   margin-top: 80px;
 
+}
+
+.languages-wrapper h1{
+  white-space: nowrap;
 }
 
 .button-wrapper {
