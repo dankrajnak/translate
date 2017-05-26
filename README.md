@@ -1,5 +1,7 @@
 # Translate
 
+I made this to learn ngrx.  The app will take any input text, and many google-translated supported languages.  The app then pipes this input text through google translate.  It's cool to see how your input is changed as it passes through the different languages.  In order to make this work, you'll need to get an API key from the google cloud platform for google translate.  I'm not giving mine away for free :)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.2.
 
 ## Development server
