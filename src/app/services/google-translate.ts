@@ -21,9 +21,9 @@ export class GoogleTranslateService {
       .catch(this.handleError);
   }
 
-  translate(q: string, from: Language, to: Language): Promise<string> {
+  translate(q: string, from: Language, to: Language): Observable<string> {
     return this.http.post(`${this.API_PATH}?key=${Secret.KEY}`, {q, source: from.language, target: to.language})
-      .toPromise().then(res => res.json().data.translations.translatedText);
+      .map(res => res.json().data.translations[0].translatedText);
   }
 
   private handleError(error: any): Promise<any> {

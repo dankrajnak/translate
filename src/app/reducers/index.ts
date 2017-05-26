@@ -14,16 +14,19 @@ import { combineReducers } from '@ngrx/store';
  */
 import * as fromTextBox from './textbox';
 import * as fromLanguages from './languages';
+import * as fromResults from './results';
 
 export interface State {
   textBox: fromTextBox.State;
   languages: fromLanguages.State;
+  results: fromResults.State;
 }
 
 // Assemble reducers to create a top level reducer.
 const reducers = {
   textBox: fromTextBox.reducer,
   languages: fromLanguages.reducer,
+  results: fromResults.reducer,
 };
 
 const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
@@ -41,3 +44,8 @@ export const getInputText = createSelector(getTextBoxState, fromTextBox.getInput
 // Selector functions for Languages State
 export const getLanguagesState = (state: State) => state.languages;
 export const getLanguages = createSelector(getLanguagesState, fromLanguages.getLanguages);
+
+// Selector function for Results State
+export const getResultsState = (state: State) => state.results;
+export const getTranslations = createSelector(getResultsState, fromResults.getTranslations);
+export const getEnglish = createSelector(getResultsState, fromResults.getEnglish);

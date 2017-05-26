@@ -1,26 +1,19 @@
 <div class="header" id="textbox">
   <div class="inner-header">
     <div class="header-input">
-      <h1 class="display-4 header-text">Input something to be translated:</h1>
+      <h1 class="display-4 header-text">Enter something to be translated:</h1>
       <app-textbox></app-textbox>
     </div>
-  </div>
-</div>
 
-<div class="header" id="languages">
-  <div class = "inner-header">
+
     <div class = "languages-wrapper">
         <h1 class="display-4 header-text">Pick your languages:</h1>
         <app-languages></app-languages>
-      </div>
+    </div>
       <div class ="button-wrapper">
-        <button type="button" class="btn btn-primary btn-large"> Translate </button>
+        <button type="button" class="btn btn-primary btn-large" (click)="translate()"> Translate </button>
       </div>
-  </div>
-</div>
 
-<div class="header" id="results">
-  <div class = "inner-header">
     <app-results></app-results>
   </div>
 </div>

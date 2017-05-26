@@ -1,0 +1,23 @@
+.language-card {
+  width: 100%;
+  background-color: #EEE;
+  margin-bottom: 40px;
+  box-shadow: 3px 3px 3px rgba(20, 20, 20, .7);
+}
+
+.language-title {
+  background-color: #CCC;
+  width: 100%;
+  padding: 20px;
+  box-shadow: 0px 3px 3px 0px rgba(20, 20, 20, .7);
+}
+
+.english{
+    background-color: #DDD;
+    padding-left:20px;
+    box-shadow: 0px 3px 3px 0px rgba(20, 20, 20, .7);
+}
+
+.translation{
+  padding: 20px;
+}

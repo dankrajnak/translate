@@ -1,3 +1,5 @@
-<p>
-  results works!
-</p>
+<div  *ngFor="let translation of translations | async; let i = index"  class = "language-card">
+  <div class ="language-title"><h3>{{(languages | async)[i].name}}</h3></div>
+  <div class = "english"><p>{{(english | async)[i]}}</p></div>
+  <div class = "translation"><p>{{translation}}</p></div>
+</div>

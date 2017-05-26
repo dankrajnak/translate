@@ -1,4 +1,3 @@
-import { GoogleTranslateService } from '../../services/google-translate';
 import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
 import { createLanguageService } from 'tslint/lib';
@@ -6,8 +5,9 @@ import { Component, OnInit } from '@angular/core';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { FormsModule } from '@angular/forms';
 import 'rxjs/add/observable/of';
-import { Language } from './../../models/language';
 
+import { Language } from './../../models/language';
+import { GoogleTranslateService } from '../../services/google-translate';
 import * as fromRoot from '../../reducers';
 import * as languages from '../../actions/languages';
 

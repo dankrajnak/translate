@@ -1,3 +1,6 @@
+import { GoogleTranslateService } from './services/google-translate';
+import { ResultsEffects } from './effects/results';
+import { EffectsModule } from '@ngrx/effects';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -30,11 +33,12 @@ import { reducer } from './reducers';
     TypeaheadModule.forRoot(),
     StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
+    EffectsModule.run(ResultsEffects),
     BrowserModule,
     FormsModule,
     HttpModule,
   ],
-  providers: [],
+  providers: [GoogleTranslateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
