@@ -63,7 +63,6 @@ export class ResultsEffects {
     english$: Observable<Action> = this.actions$
       .ofType(results.TRANSLATE_TO_ENGLISH)
       .map(toPayload)
-      .do(payload => console.log(payload))
       .mergeMap(payload => this.translateService.translate(payload.q, payload.source, {name: 'English', language: 'en'}))
       .map(res => new results.GotEnglishTranslationAction(res));
 

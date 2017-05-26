@@ -67,7 +67,6 @@ export class LanguagesComponent implements OnInit{
       swap.movedItem = {name: undefined};
     }
     if (swap.to !== swap.from) {
-      console.log(swap.movedItem.name + ' moved from ' + swap.from + ' to ' + swap.to + '.');
       this.store.dispatch(new languages.MoveLanguageAction({language: swap.movedItem, from: swap.from, to: swap.to}));
     }
   }

@@ -1,5 +1,6 @@
 import { GoogleTranslateService } from './services/google-translate';
 import { ResultsEffects } from './effects/results';
+import { LanguageEffects } from './effects/languages';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -34,6 +35,7 @@ import { reducer } from './reducers';
     StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(ResultsEffects),
+    EffectsModule.run(LanguageEffects),
     BrowserModule,
     FormsModule,
     HttpModule,
